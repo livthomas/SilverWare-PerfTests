@@ -12,5 +12,17 @@
          </destination>
       </reporter>
       <reporter class="WarmUpReporter" enabled="true"/>
+      <reporter class="ThroughputStatsReporter">
+         <property name="minimumEnabled" value="false"/>
+         <property name="maximumEnabled" value="false"/>
+         <destination class="ChartDestination">
+            <period type="time" value="1000"/>
+            <property name="name" value="Throughput"/>
+            <property name="group" value="${perfcake.scenario}_throughput"/>
+            <property name="yAxis" value="Average throughput"/>
+            <property name="outputDir" value="target/perfreport"/>
+            <property name="attributes" value="Average"/>
+         </destination>
+      </reporter>
    </reporting>
 </scenario>
