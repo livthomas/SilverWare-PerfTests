@@ -20,10 +20,10 @@ First, you need to install SilverWare to your local Maven repository. Clone [Sil
 mvn clean install -DskipTests
 ```
 
-Proceed with running `CdiPerformanceTest` in order to measure the performance of pure CDI invocation on your machine:
+Proceed with running `CdiPerformanceTest` from [SilverWare-PerfTests](https://github.com/livthomas/SilverWare-PerfTests) repository in order to measure the performance of pure CDI invocation on your machine:
 
 ```
-mvn clean test -Dtest=CdiPerformanceTest
+mvn test -Dtest=CdiPerformanceTest
 ```
 
 It takes some time to execute the tests (approximately 90 seconds). After they finish, you should see a result similar to this one:
@@ -35,15 +35,16 @@ It takes some time to execute the tests (approximately 90 seconds). After they f
 Finally, run `HystrixPerformanceTest` to measure the performance of microservice invocation using Hystrix:
 
 ```
-mvn clean test -Dtest=HystrixPerformanceTest
+mvn test -Dtest=HystrixPerformanceTest
 ```
 
 You should again see similar result as in the previous run:
 
 ```
 [0:01:00][6838748 iterations][100%] [113980.81666666667 iterations/s] [warmUp => false]
-
 ```
  
 Notice that the number of iterations per second is much lower than in the previous run.
 This is caused by the overhead introduced by Hystrix.
+
+You can also see the difference on the graphs in the automatically generated performance report that can be found in `hystrix-perftests/target/perfreport/` folder.
