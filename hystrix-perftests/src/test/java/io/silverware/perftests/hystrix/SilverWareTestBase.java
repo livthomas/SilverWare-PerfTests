@@ -2,7 +2,7 @@
  * -----------------------------------------------------------------------\
  * SilverWare
  *
- * Copyright (C) 2016 the original author or authors.
+ * Copyright (C) 2016 - 2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,9 @@ import javax.enterprise.inject.spi.BeanManager;
 
 public class SilverWareTestBase {
 
+   protected static final String CDI_REST_SCENARIO = new File(SilverWareTestBase.class.getClassLoader().getResource("scenarios/cdi-rest.xml").getFile()).getAbsolutePath();
    protected static final String HYSTRIX_SCENARIO = new File(SilverWareTestBase.class.getClassLoader().getResource("scenarios/hystrix.xml").getFile()).getAbsolutePath();
+   protected static final String HYSTRIX_REST_SCENARIO = new File(SilverWareTestBase.class.getClassLoader().getResource("scenarios/hystrix-rest.xml").getFile()).getAbsolutePath();
 
    private BootUtil bootUtil;
    private Thread platform;

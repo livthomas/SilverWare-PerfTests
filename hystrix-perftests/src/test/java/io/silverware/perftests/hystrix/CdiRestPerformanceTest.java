@@ -2,7 +2,7 @@
  * -----------------------------------------------------------------------\
  * SilverWare
  *
- * Copyright (C) 2016 - 2017 the original author or authors.
+ * Copyright (C) 2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,24 +20,22 @@
 package io.silverware.perftests.hystrix;
 
 import io.silverware.microservices.providers.cdi.CdiMicroserviceProvider;
+import io.silverware.microservices.providers.http.HttpServerMicroserviceProvider;
 
 import org.junit.Test;
 import org.perfcake.PerfCakeException;
 import org.perfcake.scenario.Scenario;
 import org.perfcake.scenario.ScenarioLoader;
 
-public class CdiPerformanceTest extends SilverWareTestBase {
+public class CdiRestPerformanceTest extends SilverWareTestBase {
 
-   public CdiPerformanceTest() {
-      super(CounterMicroservice.class.getPackage(), CdiMicroserviceProvider.class.getPackage());
+   public CdiRestPerformanceTest() {
+      super(CounterMicroservice.class.getPackage(), CdiMicroserviceProvider.class.getPackage(), HttpServerMicroserviceProvider.class.getPackage());
    }
 
    @Test
-   public void testCdi() throws PerfCakeException {
-      CdiCounterMicroservice cdiCounterMicroservice = lookupBean(CdiCounterMicroservice.class);
-      SilverWareSender.counterMicroservice = cdiCounterMicroservice.getCounterMicroservice();
-
-      Scenario scenario = ScenarioLoader.load(HYSTRIX_SCENARIO);
+   public void testCdiRest() throws PerfCakeException {
+      Scenario scenario = ScenarioLoader.load(CDI_REST_SCENARIO);
       scenario.init();
       scenario.run();
       scenario.close();
